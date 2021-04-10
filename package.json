@@ -7,6 +7,9 @@
     "serve": "vite preview"
   },
   "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "sass": "^1.32.8",
     "vite": "^2.1.5"
-  }
+  },
+  "dependencies": {}
 }
