@@ -22,6 +22,9 @@
 .bg-red-light {
   background-color: var(--color-red-light);
 }
+.bg-white {
+  background-color: white;
+}
 
 .text-yellow {
   color: var(--color-yellow);
@@ -51,11 +54,21 @@
     width: calc(#{$i}rem / 4);
   }
 }
+.w-1\/2 {
+  width: 50%;
+}
+.w-3\/4 {
+  width: 75%;
+}
 .w-full {
   width: 100%;
 }
 .w-screen {
   width: 100vw;
+}
+
+.h-full {
+  height: 100%;
 }
 .h-screen {
   height: 100vh;
@@ -84,6 +97,14 @@
     margin-left: calc(#{$i}rem / 4);
     margin-right: calc(#{$i}rem / 4);
   }
+  .mt-#{$i} {
+    margin-top: calc(#{$i}rem / 4);
+  }
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @for $i from 0 through 96 {
@@ -99,6 +120,12 @@
 }
 .absolute {
   position: absolute;
+}
+.top-0 {
+  top: 0;
+}
+.right-0 {
+  right: 0;
 }
 
 /* === flex === */
@@ -136,4 +163,16 @@ $border-radius: (
   .#{$name} {
     border-radius: $value;
   }
+}
+
+/* === grid === */
+.grid {
+  display: grid;
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.gap-4 {
+  gap: 1rem;
 }
