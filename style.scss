@@ -73,6 +73,9 @@
 .h-screen {
   height: 100vh;
 }
+.h-screen-3\/4 {
+  height: 75vh;
+}
 
 /* === spacing === */
 @for $i from 0 through 96 {
@@ -97,9 +100,17 @@
     margin-left: calc(#{$i}rem / 4);
     margin-right: calc(#{$i}rem / 4);
   }
+  .my-#{$i} {
+    margin-top: calc(#{$i}rem / 4);
+    margin-bottom: calc(#{$i}rem / 4);
+  }
   .mt-#{$i} {
     margin-top: calc(#{$i}rem / 4);
   }
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .mx-auto {
@@ -131,6 +142,12 @@
 /* === flex === */
 .flex {
   display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 $justify-content: (flex-start, flex-end, center, space-between, space-around);
