@@ -3,14 +3,36 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+  <title>GOD's FORTUNE TELLER</title>
+
+  <link rel="stylesheet" href="style.scss">
 </head>
 
 <body>
-  <div id="app"></div>
-  <script type="module" src="./main.js"></script>
+  <div class="bg-red text-yellow w-screen h-screen relative flex justify-center items-center overflow-hidden">
+    <img class="absolute z-10" src="/assets/BG.png" />
+
+    <main class="space-y-6 font-rokkitt relative z-20">
+      <header class="flex items-flex-end justify-space-between w-full">
+        <h1 class="text-5xl">月老抽籤筒</h1>
+
+        <div class="w-32 mx-16">
+          <img src="/assets/Temple.svg" />
+        </div>
+      </header>
+
+      <h2 class="text-5xl">MATCHMAKER GOD’s FORTUNE TELLER</h2>
+
+      <p class="text-right text-2xl">Find your Mr./s Right without Tinder</p>
+
+      <div class="flex justify-flex-end">
+        <button class="bg-red-light w-48 py-1 rounded-full text-2xl">GO</button>
+      </div>
+    </main>
+  </div>
 </body>
 
 </html>
