@@ -67,20 +67,3 @@
     @extend .text-2xl;
   }
 }
-
-button > div:first-child {
-  transform: rotate(180deg);
-}
-.run > div {
-  transition: all 0.5s;
-  animation: spin 4 1s alternate;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg) scale(1) skewY(0);
-  }
-  to {
-    transform: rotate(360deg) scale(0.5) skewY(20deg);
-  }
-}

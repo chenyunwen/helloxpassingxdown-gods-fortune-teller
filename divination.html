@@ -9,11 +9,12 @@
     <title>GOD's FORTUNE TELLER</title>
 
     <link rel="stylesheet" href="./styles/index.scss">
+    <link rel="stylesheet" href="./divination.scss">
 </head>
 
 <body>
     <div class="bg-red text-yellow w-screen h-screen relative flex justify-center overflow-hidden">
-        <img class="absolute z-10" src="/assets/BG.png" />
+        <img class="absolute" src="/assets/BG.png" />
 
         <main class="space-y-12 font-rokkitt py-8 relative">
             <header class="flex flex-col items-center w-full">
@@ -22,17 +23,38 @@
             </header>
 
             <div class="flex items-center">
-                <div class="flex-1 flex justify-center">
-                    <p class="text-2xl">Click the Divination blocks</p>
+
+                <div class="game-state" data-win-count="0">
+                    <!-- init state -->
+                    <div class="init">
+                        <p>Click the Divination blocks</p>
+                    </div>
+
+                    <!-- gaming state -->
+                    <div class="gaming">
+                        <p>It’s a YES !</p>
+                        <p>( <span id="win-count">0</span> / 3 )</p>
+                    </div>
+
+                    <!-- lose state -->
+                    <div class="lose">
+                        <p>Oops It’s a No....</p>
+
+                        <a href="choose.html" class="bg-red-light px-4 py-1 rounded-full text-2xl flex justify-center">
+                            Get a new number
+                        </a>
+                    </div>
                 </div>
 
                 <div class="flex-1">
-                    <button onclick="shake(this)" class="flex items-center h-96">
-                        <div id="imageLeft">
-                            <img src="/assets/Divination_Close.svg" alt="Divination Blocks image" class="h-full" />
+                    <!-- BuaBuey -->
+                    <button onclick="shake(this)" class="bua-buey">
+                        <div>
+                            <img src="/assets/Divination_Close.svg" alt="Divination Blocks image" />
                         </div>
-                        <div id="imageRight">
-                            <img src="/assets/Divination_Open.svg" alt="Divination Blocks image" class="h-full" />
+
+                        <div>
+                            <img src="/assets/Divination_Open.svg" alt="Divination Blocks image" />
                         </div>
                     </button>
                 </div>
@@ -41,52 +63,78 @@
     </div>
 
     <script>
-        let win = 0;
-
-        const success = (result) => {
-            win += result ? 1 : 0;
-
-            return win === 3;
-        }
+        'use strict';
 
         // divination blocks (n.) 筊杯
         function BuaBuey(el) {
+            const img = el.querySelector('img');
+
             return {
                 run(result) {
+                    el.classList.add('run');
+
+                    img.src = `/assets/Divination_${result ? 'Open' : 'Close'}.svg`;
+
                     el.addEventListener('animationend', () => {
-                        el.src = `/assets/Divination_${result ? 'Open' : 'Close'}.svg`;
+                        el.classList.remove('run');
                     });
+
+                    return result;
                 }
             }
         }
 
-        function shake(el) {
-            el.classList.add('run')
+        const playOnce = (function gameloop(state) {
+            let win = 0;
+            const count = state.querySelector('#win-count');
 
-            const left = BuaBuey(el.querySelector('#imageLeft img'))
-            const right = BuaBuey(el.querySelector('#imageRight img'))
+            function log({ left, right, result, win }) {
+                console.table({ left, right, result, win });
 
-            const resultLeft = Math.round(Math.random())
-            const resultRight = Math.round(Math.random())
-
-            left.run(resultLeft)
-            right.run(resultRight)
-
-            const result = (resultLeft + resultRight) % 2;
-
-            console.table({
-                resultLeft,
-                resultRight,
-                result,
-            })
-
-            if (success(result)) {
-                el.addEventListener('animationend', () => {
-                    window.location.href = "/result.html"
-                });
+                state.dataset.winCount = result ? win : -1;
+                count.textContent = win;
             }
-            function check() {
 
+            function random() {
+                const left = 0
+                const right = 1
+
+                const result = (left + right) % 2;
+                win += result;
+
+                return { left, right, result, win };
+            }
+
+            return function playOnce() {
+                const result = random();
+
+                log(result);
+
+                return result;
+            }
+        })(document.querySelector('.game-state'));
+
+        function shake(el) {
+            const result = playOnce();
+
+            const left = BuaBuey(el.querySelector('div:first-child'));
+            const right = BuaBuey(el.querySelector('div:last-child'));
+
+            left.run(result.left);
+            right.run(result.right);
+
+            if (!result.result) {
+                el.onclick = () => window.location.href = "/choose.html";
+
+                return
+            }
+
+            if (result.win >= 3) {
+                el.addEventListener('animationend', () => {
+                    window.location.href = "/result.html";
+                });
+
+                return
             }
         }
     </script>
