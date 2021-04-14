@@ -1,0 +1,86 @@
+@import "./styles/index.scss";
+
+@mixin ease-out-expo {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer {
+  --color-top: #cf5448;
+  --color-front: #691403;
+  --color-circle: #4c0801;
+
+  @extend .relative;
+  @extend .h-32;
+
+  perspective: 200px;
+
+  &:hover {
+    .top {
+      height: 1.5rem;
+      transform: rotateX(40deg);
+    }
+
+    .front {
+      transform: scale(1.02);
+    }
+  }
+
+  .top {
+    @include ease-out-expo;
+    @extend .w-full;
+    @extend .h-4;
+
+    background: var(--color-top);
+
+    transform-style: preserve-3d;
+    transform-origin: bottom center;
+    transform: rotateX(45deg);
+  }
+
+  .front {
+    @extend .w-full;
+    @extend .h-full;
+    @extend .flex;
+    @extend .justify-center;
+    @extend .items-center;
+    @extend .relative;
+    @include ease-out-expo;
+
+    background: var(--color-front);
+  }
+
+  .circle {
+    @extend .rounded-full;
+    @extend .w-8;
+    @extend .h-8;
+
+    background: var(--color-circle);
+    box-shadow: 0 -1px 0 0 var(--color-top);
+  }
+
+  .id {
+    @extend .absolute;
+    @extend .top-0;
+    @extend .right-0;
+    @extend .py-2;
+    @extend .px-4;
+    @extend .text-2xl;
+  }
+}
+
+button > div:first-child {
+  transform: rotate(180deg);
+}
+.run > div {
+  transition: all 0.5s;
+  animation: spin 4 1s alternate;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg) scale(1) skewY(0);
+  }
+  to {
+    transform: rotate(360deg) scale(0.5) skewY(20deg);
+  }
+}

@@ -1,0 +1,49 @@
+/* === padding === */
+@for $i from 0 through 96 {
+  .p-#{$i} {
+    padding: calc(#{$i}rem / 4);
+  }
+  .px-#{$i} {
+    padding-left: calc(#{$i}rem / 4);
+    padding-right: calc(#{$i}rem / 4);
+  }
+  .py-#{$i} {
+    padding-top: calc(#{$i}rem / 4);
+    padding-bottom: calc(#{$i}rem / 4);
+  }
+}
+
+/* === margin === */
+@for $i from 0 through 96 {
+  .m-#{$i} {
+    margin: calc(#{$i}rem / 4);
+  }
+  .mx-#{$i} {
+    margin-left: calc(#{$i}rem / 4);
+    margin-right: calc(#{$i}rem / 4);
+  }
+  .my-#{$i} {
+    margin-top: calc(#{$i}rem / 4);
+    margin-bottom: calc(#{$i}rem / 4);
+  }
+  .mt-#{$i} {
+    margin-top: calc(#{$i}rem / 4);
+  }
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === between === */
+@for $i from 0 through 96 {
+  .space-y-#{$i} > * + * {
+    margin-top: calc(#{$i}rem / 4);
+    margin-bottom: calc(#{$i}rem / 4);
+  }
+}

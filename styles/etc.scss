@@ -1,0 +1,11 @@
+/* === overflow === */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* === z-index === */
+@for $i from 1 through 10 {
+  .z-#{$i}0 {
+    z-index: #{$i}0;
+  }
+}

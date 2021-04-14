@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOD's FORTUNE TELLER</title>
 
-    <link rel="stylesheet" href="style.scss">
+    <link rel="stylesheet" href="./styles/index.scss">
+    <link rel="stylesheet" href="./choose.scss">
 </head>
 
 <body>
     <div class="bg-red text-yellow w-screen h-screen relative flex justify-center overflow-hidden">
-        <img class="absolute z-10" src="/assets/BG.png" />
+        <img class="absolute" src="/assets/BG.png" />
 
         <main class="space-y-6 font-rokkitt py-8 relative">
             <header class="flex justify-center w-full">
@@ -24,17 +25,18 @@
                 <img src="/assets/BOX.svg" />
 
                 <div class="absolute top-0 w-full h-full p-12 mt-3">
+
+                    <!-- leave to Eric -->
+
                     <div class="w-full h-full grid grid-cols-6 gap-4">
-                        <a href="divination.html" class="relative perspective">
-                            <!-- top -->
+                        <!-- drawer -->
+                        <a href="divination.html" class="drawer">
                             <div class="top"></div>
-                            <!-- front -->
-                            <div class="front relative">
-                                <span class="absolute top-0 right-0 px-4 text-2xl">1</span>
+                            <div class="front">
+                                <span class="id">1</span>
                                 <div class="circle"></div>
                             </div>
                         </a>
-                        <!-- leave to Eric -->
                     </div>
                 </div>
             </div>
@@ -44,9 +46,8 @@
 
 <!-- 
     Eric task
-    1. for each to generate elements
+    1. generate drawers using forEach
     2. grid layout
-    3. handle click
  -->
 
 </html>

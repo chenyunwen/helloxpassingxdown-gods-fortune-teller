@@ -1,0 +1,50 @@
+/* === position === */
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.top-0 {
+  top: 0;
+}
+.right-0 {
+  right: 0;
+}
+
+/* === flex === */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+$justify-content: (flex-start, flex-end, center, space-between, space-around);
+@each $value in $justify-content {
+  .justify-#{$value} {
+    justify-content: $value;
+  }
+}
+
+$align-items: (flex-start, flex-end, center);
+@each $value in $align-items {
+  .items-#{$value} {
+    align-items: $value;
+  }
+}
+
+/* === grid === */
+.grid {
+  display: grid;
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.gap-4 {
+  gap: 1rem;
+}

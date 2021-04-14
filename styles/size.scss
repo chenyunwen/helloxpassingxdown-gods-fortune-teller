@@ -1,0 +1,35 @@
+/* === width === */
+@for $i from 4 through 96 {
+  .w-#{$i} {
+    width: calc(#{$i}rem / 4);
+  }
+}
+.w-1\/2 {
+  width: 50%;
+}
+.w-3\/4 {
+  width: 75%;
+}
+.w-full {
+  width: 100%;
+}
+.w-screen {
+  width: 100vw;
+}
+
+/* === height === */
+@for $i from 4 through 96 {
+  .h-#{$i} {
+    height: calc(#{$i}rem / 4);
+  }
+}
+
+.h-full {
+  height: 100%;
+}
+.h-screen {
+  height: 100vh;
+}
+.h-screen-3\/4 {
+  height: 75vh;
+}
