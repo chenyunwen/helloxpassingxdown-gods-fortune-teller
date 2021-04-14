@@ -24,7 +24,7 @@
 
             <div class="flex items-center">
 
-                <div class="game-state" data-win-count="0">
+                <div class="flex-1 game-state" data-win-count="0">
                     <!-- init state -->
                     <div class="init">
                         <p>Click the Divination blocks</p>
@@ -50,11 +50,11 @@
                     <!-- BuaBuey -->
                     <button onclick="shake(this)" class="bua-buey">
                         <div>
-                            <img src="/assets/Divination_Close.svg" alt="Divination Blocks image" />
+                            <img src="/assets/Divination_L_Close.png" alt="Divination Blocks image" />
                         </div>
 
                         <div>
-                            <img src="/assets/Divination_Open.svg" alt="Divination Blocks image" />
+                            <img src="/assets/Divination_R_Close.png" alt="Divination Blocks image" />
                         </div>
                     </button>
                 </div>
@@ -66,14 +66,24 @@
         'use strict';
 
         // divination blocks (n.) 筊杯
-        function BuaBuey(el) {
+        function BuaBuey(el, type) {
             const img = el.querySelector('img');
 
             return {
+                bomb(result) {
+                    img.src = `/assets/Divination_Broken_${type}_${result ? 'Open' : 'Close'}.png`;
+
+                    const bomb = document.createElement('img')
+                    bomb.src = 'https://media.giphy.com/media/3oEduY84FNdX9P5Edi/giphy.gif'
+                    bomb.className = "fixed top-0 left-0 w-full h-full z-20"
+                    document.body.append(bomb)
+
+                    setTimeout(() => bomb.remove(), 2000)
+                },
                 run(result) {
                     el.classList.add('run');
 
-                    img.src = `/assets/Divination_${result ? 'Open' : 'Close'}.svg`;
+                    img.src = `/assets/Divination_${type}_${result ? 'Open' : 'Close'}.png`;
 
                     el.addEventListener('animationend', () => {
                         el.classList.remove('run');
@@ -96,8 +106,18 @@
             }
 
             function random() {
-                const left = 0
-                const right = 1
+                const items = [
+                    { left: 0, right: 1 },
+                    { left: 0, right: 1 },
+                    { left: 0, right: 1 },
+                    { left: 1, right: 0 },
+                    { left: 1, right: 0 },
+                    { left: 1, right: 0 },
+                    { left: 1, right: 1 },
+                    { left: 0, right: 0 },
+                ];
+
+                const { left, right } = items[items.length * Math.random() | 0];
 
                 const result = (left + right) % 2;
                 win += result;
@@ -117,13 +137,15 @@
         function shake(el) {
             const result = playOnce();
 
-            const left = BuaBuey(el.querySelector('div:first-child'));
-            const right = BuaBuey(el.querySelector('div:last-child'));
+            const left = BuaBuey(el.querySelector('div:first-child'), 'L');
+            const right = BuaBuey(el.querySelector('div:last-child'), 'R');
 
             left.run(result.left);
             right.run(result.right);
 
             if (!result.result) {
+                Math.round(Math.random()) && left.bomb(result)
+
                 el.onclick = () => window.location.href = "/choose.html";
 
                 return

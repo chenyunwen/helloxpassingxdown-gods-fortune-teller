@@ -5,17 +5,17 @@
   @extend .items-center;
   @extend .h-96;
 
-  img {
-    @extend .h-full;
+  > div {
+    @extend .w-full;
+    position: absolute;
   }
 
-  > *:last-child img {
-    transform: scale(-1, 1) rotate(20deg);
+  > div:first-child > div {
+    transform: rotate(0.5turn);
   }
 }
 
 .game-state {
-  @extend .flex-1;
   @extend .text-2xl;
 
   > div {
