@@ -150,14 +150,14 @@
             if (!result.result) {
                 Math.round(Math.random()) && left.bomb(result)
 
-                el.onclick = () => window.location.href = "/choose.html";
+                el.onclick = () => window.location.href = "choose.html";
 
                 return
             }
 
             if (result.win >= 3) {
                 el.addEventListener('animationend', () => {
-                    window.location.href = "/result.html";
+                    window.location.href = "result.html";
                 });
 
                 return
