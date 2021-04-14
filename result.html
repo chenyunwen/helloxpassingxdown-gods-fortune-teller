@@ -9,11 +9,12 @@
     <title>GOD's FORTUNE TELLER</title>
 
     <link rel="stylesheet" href="./styles/index.scss">
+    <link rel="stylesheet" href="./result.scss">
 </head>
 
 <body>
     <div class="bg-red text-yellow w-screen h-screen relative flex justify-center overflow-hidden">
-        <img class="absolute z-10" src="/assets/BG.png" />
+        <img class="absolute" src="/assets/BG.png" />
 
         <main class="space-y-12 font-rokkitt py-8 relative">
             <header class="flex flex-col items-center w-full">
@@ -23,9 +24,17 @@
             <div class="flex w-screen">
                 <div class="flex-1"></div>
 
-                <div class="">
+                <div class="relative text-black result">
                     <img src="/assets/Fortune_Stick.svg" alt="fortune stick image" />
 
+                    <div class="absolute top-0 w-full h-full">
+                        <div class="py-8 flex justify-center">
+                            <h2 class="text-5xl">兇</h2>
+                        </div>
+                        <div class="px-20 py-4 w-full">
+                            <p class="text-5xl ml-auto" style="writing-mode: vertical-rl;">單身活該</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="flex-1 mx-8 flex justify-center h-screen-3/4">
