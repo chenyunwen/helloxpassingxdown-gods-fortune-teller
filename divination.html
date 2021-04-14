@@ -75,7 +75,7 @@
 
             return {
                 bomb(result) {
-                    img.src = `/Divination_Broken_${type}_${result ? 'Open' : 'Close'}.png`;
+                    img.src = `${"https://kayac-chang.github.io/helloxpassingxdown-gods-fortune-teller/"}/Divination_Broken_${type}_${result ? 'Open' : 'Close'}.png`;
 
                     const bomb = document.createElement('img')
                     bomb.src = 'https://media.giphy.com/media/3oEduY84FNdX9P5Edi/giphy.gif'
@@ -87,7 +87,7 @@
                 run(result) {
                     el.classList.add('run');
 
-                    img.src = `/Divination_${type}_${result ? 'Open' : 'Close'}.png`;
+                    img.src = `${"https://kayac-chang.github.io/helloxpassingxdown-gods-fortune-teller/"}/Divination_${type}_${result ? 'Open' : 'Close'}.png`;
 
                     el.addEventListener('animationend', () => {
                         el.classList.remove('run');
