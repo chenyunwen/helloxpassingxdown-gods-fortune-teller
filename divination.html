@@ -22,120 +22,83 @@
                 <p>You need to get “Yes” for three times</p>
             </header>
 
-            <div class="flex items-center">
-
-                <div class="flex-1 game-state" data-win-count="0">
+            <div>
+                <div class="game-state" data-win-count="0">
                     <!-- init state -->
-                    <div class="init">
-                        <p>Click the Divination blocks</p>
-                    </div>
 
                     <!-- gaming state -->
-                    <div class="gaming">
-                        <p>It’s a YES !</p>
-                        <p>( <span id="win-count">0</span> / 3 )</p>
-                    </div>
 
                     <!-- lose state -->
-                    <div class="lose">
-                        <p>Oops It’s a No....</p>
-
-                        <a href="choose.html" class="bg-red-light px-4 py-1 rounded-full text-2xl flex justify-center">
-                            Get a new number
-                        </a>
-                    </div>
                 </div>
 
-                <div class="flex-1">
-                    <!-- BuaBuey -->
-                    <button onclick="shake(this)" class="bua-buey">
-                        <div>
-                            <img src="/Divination_L_Close.png" alt="Divination Blocks image" />
-                        </div>
-
-                        <div>
-                            <img src="/Divination_R_Close.png" alt="Divination Blocks image" />
-                        </div>
-                    </button>
+                <div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script>
-        'use strict';
+    <!-- 
+        === init state ===
+        <div class="init">
+            <p>Click the Divination blocks</p>
+        </div>
+
+        === gaming state ===
+        <div class="gaming">
+            <p>It’s a YES !</p>
+            <p>( <span id="win-count">0</span> / 3 )</p>
+        </div>
+
+        === lose state === 
+        <div class="lose">
+            <p>Oops It’s a No....</p>
+
+            <a href="choose.html" class="bg-red-light px-4 py-1 rounded-full text-2xl flex justify-center">
+                Get a new number
+            </a>
+        </div>
+     -->
+
+    <!-- 
+        BuaBuey component
+
+        <button onclick="shake(this)" class="bua-buey">
+            <div>
+                <img src="/Divination_L_Close.png" alt="Divination Blocks image" />
+            </div>
+
+            <div>
+                <img src="/Divination_R_Close.png" alt="Divination Blocks image" />
+            </div>
+        </button>
+     -->
+
+    <script type="module">
+        import gameloop from './divination'
+
+        const playOnce = gameloop();
 
         // divination blocks (n.) 筊杯
         function BuaBuey(el, type) {
             const img = el.querySelector('img');
 
             return {
-                bomb(result) {
-                    img.src = `${import.meta.env.BASE_URL}/Divination_Broken_${type}_${result ? 'Open' : 'Close'}.png`;
-
-                    const bomb = document.createElement('img')
-                    bomb.src = 'https://media.giphy.com/media/3oEduY84FNdX9P5Edi/giphy.gif'
-                    bomb.className = "fixed top-0 left-0 w-full h-full z-20"
-                    document.body.append(bomb)
-
-                    setTimeout(() => bomb.remove(), 2000)
-                },
                 run(result) {
-                    el.classList.add('run');
-
-                    img.src = `${import.meta.env.BASE_URL}/Divination_${type}_${result ? 'Open' : 'Close'}.png`;
-
-                    el.addEventListener('animationend', () => {
-                        el.classList.remove('run');
-                    });
+                    // Eric TODO
 
                     return result;
                 }
             }
         }
 
-        const playOnce = (function gameloop(state) {
-            let win = 0;
-            const count = state.querySelector('#win-count');
-
-            function log({ left, right, result, win }) {
-                console.table({ left, right, result, win });
-
-                state.dataset.winCount = result ? win : -1;
-                count.textContent = win;
-            }
-
-            function random() {
-                const items = [
-                    { left: 0, right: 1 },
-                    { left: 0, right: 1 },
-                    { left: 0, right: 1 },
-                    { left: 1, right: 0 },
-                    { left: 1, right: 0 },
-                    { left: 1, right: 0 },
-                    { left: 1, right: 1 },
-                    { left: 0, right: 0 },
-                ];
-
-                const { left, right } = items[items.length * Math.random() | 0];
-
-                const result = (left + right) % 2;
-                win += result;
-
-                return { left, right, result, win };
-            }
-
-            return function playOnce() {
-                const result = random();
-
-                log(result);
-
-                return result;
-            }
-        })(document.querySelector('.game-state'));
+        function log({ left, right, result, win }) {
+            // Eric TODO
+        }
 
         function shake(el) {
             const result = playOnce();
+
+            log(result);
 
             const left = BuaBuey(el.querySelector('div:first-child'), 'L');
             const right = BuaBuey(el.querySelector('div:last-child'), 'R');
@@ -143,22 +106,14 @@
             left.run(result.left);
             right.run(result.right);
 
-            if (!result.result) {
-                Math.round(Math.random()) && left.bomb(result)
+            // Eric TODO
 
-                el.onclick = () => window.location.href = "choose.html";
+            // 1. if not win
 
-                return
-            }
-
-            if (result.win >= 3) {
-                el.addEventListener('animationend', () => {
-                    window.location.href = "result.html";
-                });
-
-                return
-            }
+            // 2. if win
         }
+
+        window.shake = shake;
     </script>
 </body>
 
