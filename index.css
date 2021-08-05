@@ -1,0 +1,50 @@
+.wrapper{
+    /* .xxx = class = "xxx"
+    將style = "ooo" 改寫於此
+    style不要用 id ! */
+    display: flex; 
+    flex-direction: column;
+}
+
+.header{
+    display: flex; 
+    flex-direction: row; 
+    align-items: baseline; 
+    justify-content: space-between;
+}
+
+.header h1{
+    /* class = "header" 裡面為h1的元素 */
+    font-size: 2rem;
+}
+
+.header img{
+    width: 8rem;
+}
+
+.content-1{
+    font-size: 3rem;
+}
+
+.content-2{
+    font-size: 2rem;
+}
+
+.gobutton{
+    display: flex;
+}
+
+/* .gobutton button{
+    background-color: brown; width: 16rem; border-radius: 8.5rem; margin-left: auto;
+} */
+
+.gobutton a{
+    /* new */
+    display: block;
+    text-align: center;
+
+    background-color: brown; 
+    width: 16rem; 
+    border-radius: 8.5rem; 
+    margin-left: auto;
+}

@@ -1,0 +1,27 @@
+:root {
+  --color-red: #702a2a;
+  --color-red-light: #d05448;
+  --color-yellow: #e3a609;
+}
+
+.bg-red {
+  background-color: var(--color-red);
+}
+
+.bg-red-light {
+  background-color: var(--color-red-light);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.text-yellow {
+  color: var(--color-yellow);
+}
+
+.text-black {
+  color: black;
+}
+
+/*# sourceMappingURL=color.css.map */

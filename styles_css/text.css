@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Rokkitt&display=swap");
+.font-rokkitt {
+  font-family: "Rokkitt", serif;
+}
+
+/* === size === */
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+/* === align === */
+.text-right {
+  text-align: right;
+}
+
+/* === writing mode === */
+.mode-vertical-rl {
+  writing-mode: vertical-rl;
+}
+
+/*# sourceMappingURL=text.css.map */

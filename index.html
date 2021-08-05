@@ -8,17 +8,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GOD's FORTUNE TELLER</title>
 
-  <link rel="stylesheet" href="./styles/index.scss">
+  <link rel="stylesheet" href="./styles_css/index.css">
+  <link rel="stylesheet" href="index.css">
+
 </head>
 
 <body>
   <div class="bg-red text-yellow w-screen h-screen relative flex justify-center items-center overflow-hidden">
-    <img class="absolute" src="/BG.png" />
+    <img class="absolute" src="public/BG.png" />
 
     <main class="space-y-6 font-rokkitt relative">
       <!-- 
         Eric TODO
        -->
+      <div class="wrapper">
+        <div class="header">
+         <!-- align-items: 疊層的樣式，對齊方式? ; 
+           justify-content: 分配同一列的物體之間、周圍空間的關係，如何排列? (space-between 表示每個元素間距相同，行首/行尾會對齊邊界) -->
+         <h1>月老求籤筒</h1>
+         <img src="public/Temple.svg" alt="icon's img">
+        </div>
+
+        <p class="content-1">MATCHMAKER GOD's FORTUNE TELLER</p>
+
+        <p class="content-2">Find Your Mr./s Right without Tinder</p>
+
+        <div class="gobutton">
+         <!-- border-radius: 外框四個角圓滑 -->
+         <!-- <button>Go</button> 改為 <a> -->
+         <a href="choose.html">Go</a>
+        </div>
+        
+
+      </div>
     </main>
   </div>
 </body>
